@@ -2,31 +2,24 @@
 
 <article class="profile-card">
 
-    <header class="header-rechts">
-      <h1>Hoi,👋ik ben<br>{{ person.name }}</h1>
-    </header>
+  <header>
+    <h1>Hoi,👋ik ben {{ person.name }}</h1>
+  </header>
 
-    <header class="header-links">
-      <h2 class="title">Frontend Designer<br> & Developer</h2>
-    </header>
+  <p>{{ person.bio }}</p>
 
-    <section class="section-links">
-      <p class="locatie"><img class="photo" src="assets/photo.jpg"><br>
-        Amsterdam, Nederland<img class="flag" src="assets/flag.png"></p>
-    </section>
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>Liquid</li>
+  </ul>
+  
+  <input type="checkbox">
+  
+  <img src="{{ person.avatar }}">
 
-    <section class="section-rechts">
-      <p>Ik ben 20 jaar, ik houd van<br> programmeren en ik heb<br> een oog voor detail.</p>
-      <p><a href="https://en.wikipedia.org/wiki/HTML" target="_blank"><img src="assets/html.png"></a><a
-          href="https://en.wikipedia.org/wiki/CSS" target="_blank"><img src="assets/css.png"></a><a
-          href="https://en.wikipedia.org/wiki/JavaScript" target="_blank"><img src="assets/js.png"></a></p>
-    </section>
+</article>
 
-  </article>
-
-  <button>
-    <img class="moon" src="assets/moon.png">
-    <img class="sun" src="assets/sun.png">
-  </button>
 
 {% render 'partials/foot.liquid' %}
