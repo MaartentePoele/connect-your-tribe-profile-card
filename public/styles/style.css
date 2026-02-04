@@ -18,7 +18,7 @@ body {
   background-color: var(--primary-background-color);
   display: grid;
   place-items: center;
-  /* min-height: 100dvh; */
+  min-height: 100dvh;
 }
 
 article {
