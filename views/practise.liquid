@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitekaartje Maarten te Poele</title>
+</head>
+
+<body>
+
+<h1>Data-Driven Web</h1>
+<p>Ik ben {{ person.name }}</p>
+<p>Ik ben geboren op: {{ person.birthdate | date_to_long_string: '%d-%m-%Y' }}</p>
+<p>Het is vandaag: {{ 'now' | date_to_string: '%d-%m-%Y' }}</p>
+<details><summary>Data</summary><pre>{{ person | json:4 }}</pre></details>
