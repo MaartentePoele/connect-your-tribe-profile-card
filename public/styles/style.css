@@ -6,12 +6,78 @@
 }
 
 html {
-  --primary-background-color: oklch(10% 0 0);
-  --secondary-background-color: oklch(20% 0 0);
-  --tertiary-background-color: oklch(30% 0 0);
+  color-scheme: light dark;
 
-  --primary-accent-color: oklch(95% 0 0);
-  --secondary-accent-color: oklch(70% 0 0);
+  --primary-background-color: light-dark(oklch(92% 0 0), oklch(10% 0 0));
+  --secondary-background-color: light-dark(oklch(96% 0 0), oklch(20% 0 0));
+  --tertiary-background-color: light-dark(oklch(100% 0 0), oklch(30% 0 0));
+
+  --primary-accent-color: light-dark(oklch(5% 0 0), oklch(95% 0 0));
+  --secondary-accent-color: light-dark(oklch(30% 0 0), oklch(70% 0 0));
+}
+
+html:has([value="light"]:checked) {
+  color-scheme: light;
+
+  label:nth-of-type(1) {
+    display: grid;
+  }
+
+  label:nth-of-type(2) {
+    display: none;
+  }
+}
+
+html:has([value="dark"]:checked) {
+  color-scheme: dark;
+
+  label:nth-of-type(1) {
+    display: none;
+  }
+
+  label:nth-of-type(2) {
+    display: grid;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  label:nth-of-type(1) {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  label:nth-of-type(2) {
+    display: none;
+  }
+}
+
+form {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+label {
+  background-color: var(--tertiary-background-color);
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    inset 0 1px 2px oklch(100% 0 0 / 18.82%),
+    0 2px 4px oklch(0 0 0 / 18.82%),
+    0 4px 8px oklch(0 0 0 / 8.24%);
+}
+
+input {
+  display: none;
 }
 
 body {
@@ -25,24 +91,35 @@ article {
   background-color: var(--secondary-background-color);
   border-radius: 3rem;
   padding: 3rem;
-  
-  
-  display: grid;
-  justify-items: center;
-  gap: 1rem;
-  
-  box-shadow: inset 0 1px 2px #ffffff30, 0 1px 2px #00000030, 0 2px 4px #00000015;
 
-  /* @media (min-width: 768px) {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+
+  box-shadow:
+    inset 0 1px 2px oklch(100% 0 0 / 18.82%),
+    0 2px 4px oklch(0 0 0 / 18.82%),
+    0 4px 8px oklch(0 0 0 / 8.24%);
+
+  @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-  } */
+    justify-items: flex-start;
+    padding: 6rem 3rem;
+  }
 }
 
 h1 {
   color: var(--primary-accent-color);
-  font-size: 1.5rem;
-  /* justify-self: center; */
+  font-size: 1.75rem;
+
+  @media (min-width: 350px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
 }
 
 p {
@@ -50,6 +127,16 @@ p {
   font-size: 1rem;
   width: 220px;
   text-align: center;
+
+  @media (min-width: 336px) {
+    width: 239px;
+  }
+
+  @media (min-width: 1024px) {
+    text-align: left;
+    font-size: 1.5rem;
+    width: 359px;
+  }
 }
 
 span {
@@ -59,23 +146,27 @@ span {
 ul {
   list-style-type: none;
   display: flex;
-  margin: 0;
-  width: 220px;
   gap: 1rem;
 }
 
 li {
-  width: 43px;
   height: 43px;
+  aspect-ratio: 1;
+
+  @media (min-width: 1024px) {
+    height: 65px;
+  }
 }
 
 img {
   border-radius: 1rem;
   width: 220px;
 
-  /* @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     grid-area: 1 / 2 / 4 / 3;
-  } */
+    width: 300px;
+    margin-left: auto;
+  }
 }
 
 path:nth-of-type(1) {
@@ -87,24 +178,24 @@ path:nth-of-type(2) {
 }
 
 path {
-  transition: all 0.1s ease;
+  transition: fill .1s ease;
 }
 
 .html-logo:hover {
-  --logo-background-color: #e44d26;
-  --logo-text-color: #fff;
+  --logo-background-color: oklch(62.48% 0.194 35.07);
+  --logo-text-color: oklch(100% 0 0);
 }
 
 .css-logo:hover {
-  --logo-background-color: #663399;
-  --logo-text-color: #fff;
+  --logo-background-color: oklch(44.03% 0.1603 303.37);
+  --logo-text-color: oklch(100% 0 0);
 }
 
 .js-logo:hover {
-  --logo-background-color: #ffff00;
-  --logo-text-color: #000;
+  --logo-background-color: oklch(96.8% 0.211 109.77);
+  --logo-text-color: oklch(0% 0 0);
 }
 
 .nodejs-logo:hover path {
-  fill: #83cd29;
+  fill: oklch(77.08% 0.1995 131.8);
 }
