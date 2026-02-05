@@ -178,7 +178,7 @@ h1 {
 
 .tech-stack {
   display: flex;
-  gap: clamp(0rem, -0.5rem + 2.5vw, 1rem);
+  gap: 1rem;
   list-style-type: none;
 
   .tech-logo {
