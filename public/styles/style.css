@@ -115,8 +115,6 @@ label {
 h1 {
   color: var(--primary-accent-color);
   font-size: 1.75rem;
-  animation: --fade-top 0.5s ease both;
-  animation-delay: .1s;
 
   @media (min-width: 350px) {
     font-size: 2rem;
@@ -132,7 +130,6 @@ h1 {
   color: var(--secondary-accent-color);
   font-size: 1rem;
   text-align: center;
-  animation: --fade-top 0.5s ease both;
 
   @media (min-width: 336px) {
     width: 239px;
@@ -149,10 +146,34 @@ h1 {
   }
 }
 
+.bio {
+  transform: translateY(0);
+  transition: transform 0.5s;
+
+  @starting-style {
+    transform: translateY(-1rem);
+  }
+}
+
+h1 {
+  transform: translateY(0);
+  transition: transform 0.5s;
+  transition-delay: 0.1s;
+
+  @starting-style {
+    transform: translateY(-1rem);
+  }
+}
+
 .profile-picture {
   width: 220px;
   border-radius: 1rem;
-  animation: --profile-picture-animation 0.5s ease both;
+  transition: transform 0.5s ease;
+  transform: scale(1);
+
+  @starting-style {
+    transform: scale(0.9);
+  }
 
   @media (min-width: 1024px) {
     grid-area: 1 / 2 / 4 / 3;
@@ -167,25 +188,29 @@ h1 {
   list-style-type: none;
 
   .tech-logo:nth-of-type(1) {
-    animation-delay: 0.1s;
+    transition-delay: 0s;
   }
 
   .tech-logo:nth-of-type(2) {
-    animation-delay: 0.2s;
+    transition-delay: 0.1s;
   }
 
   .tech-logo:nth-of-type(3) {
-    animation-delay: 0.3s;
+    transition-delay: 0.2s;
   }
 
   .tech-logo:nth-of-type(4) {
-    animation-delay: 0.4s;
+    transition-delay: 0.3s;
   }
 
   .tech-logo {
     height: 43px;
     aspect-ratio: 1;
-    animation: --fade-bottom 0.5s ease both;
+    transition: transform 0.25s ease;
+
+    @starting-style {
+      transform: translateY(1rem);
+    }
 
     @media (min-width: 1024px) {
       height: 65px;
@@ -225,8 +250,6 @@ h1 {
     }
   }
 }
-
-
 
 footer {
   display: flex;
@@ -277,32 +300,5 @@ footer {
     &:active path {
       fill: var(--secondary-accent-color);
     }
-  }
-}
-
-@keyframes --fade-bottom {
-  from {
-    transform: translateY(1rem);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes --profile-picture-animation {
-  from {
-    transform: scale(0.9);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes --fade-top {
-  from {
-    transform: translateY(-1rem);
-  }
-  to {
-    transform: translateY(0);
   }
 }
