@@ -66,20 +66,20 @@ body {
   }
 }
 
-.light-dark-mode-switch {
+.theme-switch {
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 1.5rem;
+  right: 1.5rem;
 }
 
 label {
-  background-color: var(--tertiary-background-color);
-  padding: 0.5rem;
-  border-radius: 50%;
-  height: 50px;
-  aspect-ratio: 1;
   display: grid;
   place-items: center;
+  height: 50px;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  background-color: var(--tertiary-background-color);
+  border-radius: 50%;
   box-shadow: var(--primary-shadow);
 
   &:hover {
@@ -96,14 +96,12 @@ label {
 }
 
 .profile-card {
-  background-color: var(--secondary-background-color);
-  border-radius: 3rem;
-  padding: 3rem;
-
   display: grid;
   place-items: center;
   gap: 1rem;
-
+  padding: 3rem;
+  background-color: var(--secondary-background-color);
+  border-radius: 3rem;
   box-shadow: var(--primary-shadow);
 
   @media (min-width: 1024px) {
@@ -117,6 +115,8 @@ label {
 h1 {
   color: var(--primary-accent-color);
   font-size: 1.75rem;
+  animation: --fade-top 0.5s ease both;
+  animation-delay: .1s;
 
   @media (min-width: 350px) {
     font-size: 2rem;
@@ -128,10 +128,11 @@ h1 {
 }
 
 .bio {
+  width: 220px;
   color: var(--secondary-accent-color);
   font-size: 1rem;
-  width: 220px;
   text-align: center;
+  animation: --fade-top 0.5s ease both;
 
   @media (min-width: 336px) {
     width: 239px;
@@ -149,8 +150,9 @@ h1 {
 }
 
 .profile-picture {
-  border-radius: 1rem;
   width: 220px;
+  border-radius: 1rem;
+  animation: --profile-picture-animation 0.5s ease both;
 
   @media (min-width: 1024px) {
     grid-area: 1 / 2 / 4 / 3;
@@ -160,11 +162,11 @@ h1 {
 }
 
 .tech-stack {
-  list-style-type: none;
   display: flex;
   gap: 1rem;
+  list-style-type: none;
 
-  /* .tech-logo:nth-of-type(1) {
+  .tech-logo:nth-of-type(1) {
     animation-delay: 0.1s;
   }
 
@@ -178,17 +180,19 @@ h1 {
 
   .tech-logo:nth-of-type(4) {
     animation-delay: 0.4s;
-  } */
+  }
 
   .tech-logo {
     height: 43px;
     aspect-ratio: 1;
-    /* animation-name: --tech-stack-animation;
-    animation-duration: 0.5s;
-    animation-timing-function: linear; */
+    animation: --fade-bottom 0.5s ease both;
 
     @media (min-width: 1024px) {
       height: 65px;
+    }
+
+    path {
+      transition: fill 0.1s ease;
     }
 
     path:nth-of-type(1) {
@@ -197,10 +201,6 @@ h1 {
 
     path:nth-of-type(2) {
       fill: var(--logo-text-color, var(--secondary-background-color));
-    }
-
-    path {
-      transition: fill 0.1s ease;
     }
 
     .html-logo:hover {
@@ -226,20 +226,13 @@ h1 {
   }
 }
 
-/* @keyframes --tech-stack-animation {
-  from {
-    transform: translateY(1rem);
-  }
-  to {
-    transform: translateY(0);
-  }
-} */
+
 
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   gap: 1rem;
   width: 100%;
   height: 10dvh;
@@ -250,12 +243,10 @@ footer {
   }
 
   .personal-website-link {
-    color: var(--primary-accent-color);
     display: flex;
     align-items: center;
-
+    color: var(--primary-accent-color);
     text-decoration: underline transparent;
-
     transition: text-decoration 0.1s ease;
 
     &:hover {
@@ -274,9 +265,8 @@ footer {
 
   .github-logo {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-
+    bottom: 1.5rem;
+    right: 1.5rem;
     height: 50px;
     width: 50px;
 
@@ -287,5 +277,32 @@ footer {
     &:active path {
       fill: var(--secondary-accent-color);
     }
+  }
+}
+
+@keyframes --fade-bottom {
+  from {
+    transform: translateY(1rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes --profile-picture-animation {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes --fade-top {
+  from {
+    transform: translateY(-1rem);
+  }
+  to {
+    transform: translateY(0);
   }
 }
