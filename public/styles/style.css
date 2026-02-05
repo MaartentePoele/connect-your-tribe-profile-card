@@ -8,6 +8,7 @@
 html {
   color-scheme: light dark;
 
+  /* Kleuren voor light en dark mode */
   --primary-background-color: light-dark(oklch(92% 0 0), oklch(10% 0 0));
   --secondary-background-color: light-dark(oklch(96% 0 0), oklch(20% 0 0));
   --tertiary-background-color: light-dark(oklch(100% 0 0), oklch(30% 0 0));
@@ -23,11 +24,11 @@ html {
 html:has([value="light"]:checked) {
   color-scheme: light;
 
-  label:nth-of-type(1) {
+  .moon-button {
     display: grid;
   }
 
-  label:nth-of-type(2) {
+  .sun-button {
     display: none;
   }
 }
@@ -35,23 +36,23 @@ html:has([value="light"]:checked) {
 html:has([value="dark"]:checked) {
   color-scheme: dark;
 
-  label:nth-of-type(1) {
+  .moon-button {
     display: none;
   }
 
-  label:nth-of-type(2) {
+  .sun-button {
     display: grid;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  label:nth-of-type(1) {
+  .moon-button {
     display: none;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  label:nth-of-type(2) {
+  .sun-button {
     display: none;
   }
 }
@@ -90,10 +91,12 @@ label {
     cursor: pointer;
   }
 
+  /* Dit geeft de button een klik-animatie */
   &:active {
     box-shadow: none;
   }
 
+  /* Verbergt de radio-buttons om de label als input te gebruiken */
   input {
     display: none;
   }
@@ -108,6 +111,7 @@ label {
   border-radius: 3rem;
   box-shadow: var(--primary-shadow);
 
+  /* Zet de profile card horizontaal */
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -116,6 +120,7 @@ label {
   }
 }
 
+/* Geeft alle elementen in de profile card een kleine animatie na het inladen */
 h1,
 .bio,
 .profile-picture,
@@ -169,6 +174,7 @@ h1 {
     transform: scale(0.9);
   }
 
+  /* Zet de profile picture aan de rechterkant */
   @media (min-width: 1024px) {
     grid-area: 1 / 2 / 4 / 3;
     width: 300px;
@@ -197,6 +203,7 @@ h1 {
       transition: fill 0.1s ease;
     }
 
+    /* De fallback variabele wordt gebruikt als er niet gehovert wordt */
     path:nth-of-type(1) {
       fill: var(--logo-background-color, var(--primary-accent-color));
     }
@@ -208,6 +215,7 @@ h1 {
     .html-logo:hover {
       --logo-background-color: oklch(62.48% 0.194 35.07);
       --logo-text-color: oklch(100% 0 0);
+      /* Geeft de glow aan de logo's */
       filter: drop-shadow(0 0 8px oklch(62.48% 0.194 35.07));
     }
 
@@ -233,6 +241,7 @@ h1 {
   }
 }
 
+/* Vergroot het logo en de logo's ernaast een beetje */
 .tech-logo:hover {
   transform: scale(1.1);
 }
@@ -263,8 +272,7 @@ footer {
     display: flex;
     align-items: center;
     color: var(--primary-accent-color);
-    text-decoration: underline transparent;
-    transition: text-decoration 0.1s ease;
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -291,6 +299,7 @@ footer {
       fill: var(--primary-accent-color);
     }
 
+    /* Geeft de gebruiker een kleine feedback als erop wordt geklikt */
     &:active path {
       fill: var(--secondary-accent-color);
     }
